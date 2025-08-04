@@ -204,30 +204,41 @@
             scroll-snap-align: start;
             flex-shrink: 0;
         }
+        
+        /* Pop-up animation for cards */
+        .project-card, .certification-card, #education .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover, .certification-card:hover, #education .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(6, 182, 212, 0.1), 0 10px 10px -5px rgba(6, 182, 212, 0.04);
+        }
+
 
         @media (min-width: 640px) { /* sm breakpoint */
             .project-scroll-container {
-                grid-auto-columns: 60%;
+                grid-auto-columns: 70%;
             }
         }
 
         @media (min-width: 768px) { /* md breakpoint */
             .project-scroll-container {
-                grid-auto-columns: 45%;
+                grid-auto-columns: 50%;
             }
         }
 
         @media (min-width: 1024px) { /* lg breakpoint */
-            /* On large screens, it becomes a static grid */
             .project-scroll-container {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-auto-flow: initial;
-                overflow-x: visible;
-                padding: 0;
-                margin: 0;
+                grid-auto-columns: 40%; 
             }
         }
+        
+        @media (min-width: 1280px) { /* xl breakpoint */
+            .project-scroll-container {
+                 grid-auto-columns: 31%;
+            }
+        }
+
 
         @media screen and (max-width: 768px) {
             .timeline::after {
@@ -298,8 +309,8 @@
                     <a href="#" class="text-2xl font-bold text-white">Sindhuja Shaga</a>
                     <div class="hidden md:flex items-center">
                         <div class="flex items-center space-x-6">
-                            <div class="flex items-center space-x-2">
-                                <div class="eye-container">
+                             <div class="flex items-center space-x-3">
+                                <div class="eye-container mr-2">
                                     <div class="eye">
                                         <div class="pupil"></div>
                                     </div>
@@ -337,7 +348,7 @@
 
         <!-- Hero Section -->
         <main id="home" class="h-screen flex items-center justify-center text-center bg-cover bg-center">
-             
+             <!--div class="absolute inset-0 bg-black/60"></div-->
             <div class="relative z-10 px-4">
                 <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-3 flex justify-center items-center min-h-[6rem] md:min-h-[9rem]">
                     <span id="dynamic-title"></span><span class="cursor">&nbsp;</span>
@@ -349,7 +360,7 @@
                     <a href="#projects" class="inline-block bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-lg">
                         View My Work
                     </a>
-                     <a href="resume.pdf" download="SindhujaShaga_Resume.pdf" class="inline-block bg-transparent border-2 border-cyan-500 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-lg">
+                     <a href="SINDHUJA SHAGA.pdf" download="SINDHUJA_SHAGA_Resume.pdf" class="inline-block bg-transparent border-2 border-cyan-500 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-lg">
                         <i class="fas fa-download mr-2"></i>Resume
                     </a>
                 </div>
@@ -488,55 +499,66 @@
                 <h2 class="text-4xl font-bold text-center mb-12 section-title animate-on-scroll">Projects</h2>
                 <div class="project-scroll-container">
                     <!-- Project Card 1 -->
-                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll">
+                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll flex flex-col">
                         <img src="https://placehold.co/600x400/0e7490/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Automated CI/CD Pipeline</h3>
-                            <p class="text-slate-400 mb-4">
-                                Built a complete CI/CD pipeline for a Python web application using Jenkins, Docker, and deploying to AWS EC2.
-                            </p>
-                            <div class="flex justify-end space-x-4">
-                                <a href="#" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
-                                <a href="#" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fas fa-external-link-alt"></i></a>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-bold mb-2">Automated CI/CD Pipeline</h3>
+                                <p class="text-slate-400 mb-4">
+                                    Built a complete CI/CD pipeline for a Python web application using Jenkins, Docker, and deploying to AWS EC2.
+                                </p>
+                            </div>
+                            <div class="flex justify-end space-x-4 mt-auto">
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                     <!-- Project Card 2 -->
-                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll" style="transition-delay: 100ms;">
+                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll flex flex-col" style="transition-delay: 100ms;">
                         <img src="https://placehold.co/600x400/0891b2/ffffff?text=Project+2" alt="Project 2" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">IaC with Terraform</h3>
-                            <p class="text-slate-400 mb-4">
-                                Wrote Terraform scripts to provision a scalable and secure VPC on AWS, including subnets, security groups, and an RDS instance.
-                            </p>
-                             <div class="flex justify-end space-x-4">
-                                <a href="#" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
+                        <div class="p-6 flex flex-col flex-grow">
+                             <div class="flex-grow">
+                                <h3 class="text-2xl font-bold mb-2">IaC with Terraform</h3>
+                                <p class="text-slate-400 mb-4">
+                                    Wrote Terraform scripts to provision a scalable and secure VPC on AWS, including subnets, security groups, and an RDS instance.
+                                </p>
+                            </div>
+                             <div class="flex justify-end space-x-4 mt-auto">
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                     <!-- Project Card 3 -->
-                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll" style="transition-delay: 200ms;">
+                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll flex flex-col" style="transition-delay: 200ms;">
                         <img src="https://placehold.co/600x400/06b6d4/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Containerized Microservices</h3>
-                            <p class="text-slate-400 mb-4">
-                                Dockerized a multi-service application using Docker Compose for local development and prepared it for Kubernetes deployment.
-                            </p>
-                             <div class="flex justify-end space-x-4">
-                                <a href="#" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-bold mb-2">Containerized Microservices</h3>
+                                <p class="text-slate-400 mb-4">
+                                    Dockerized a multi-service application using Docker Compose for local development and prepared it for Kubernetes deployment.
+                                </p>
+                            </div>
+                             <div class="flex justify-end space-x-4 mt-auto">
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                      <!-- Project Card 4 -->
-                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll" style="transition-delay: 300ms;">
+                    <div class="card rounded-lg overflow-hidden project-card animate-on-scroll flex flex-col" style="transition-delay: 300ms;">
                         <img src="https://placehold.co/600x400/164e63/ffffff?text=Project+4" alt="Project 4" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Monitoring Stack Setup</h3>
-                            <p class="text-slate-400 mb-4">
-                                Deployed a full monitoring stack using Prometheus and Grafana to visualize application metrics and server health.
-                            </p>
-                             <div class="flex justify-end space-x-4">
-                                <a href="#" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
+                        <div class="p-6 flex flex-col flex-grow">
+                             <div class="flex-grow">
+                                <h3 class="text-2xl font-bold mb-2">Monitoring Stack Setup</h3>
+                                <p class="text-slate-400 mb-4">
+                                    Deployed a full monitoring stack using Prometheus and Grafana to visualize application metrics and server health.
+                                </p>
+                            </div>
+                             <div class="flex justify-end space-x-4 mt-auto">
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/SindhujaShaga?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition text-2xl"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
@@ -583,15 +605,15 @@
                         <i class="fas fa-graduation-cap text-5xl text-cyan-400 mr-6"></i>
                         <div>
                             <h3 class="text-xl font-bold">Master of Science in Computer Science</h3>
-                            <p class="text-slate-400">University of Technology | 2020 - 2022</p>
+                            <p class="text-slate-400">University of Dayton, Ohio, USA</p>
                         </div>
                     </div>
                     <!-- Education Card 2 -->
                     <div class="card p-6 rounded-lg flex items-center animate-on-scroll" style="transition-delay: 100ms;">
                         <i class="fas fa-university text-5xl text-cyan-400 mr-6"></i>
                         <div>
-                            <h3 class="text-xl font-bold">Bachelor of Science in Information Technology</h3>
-                            <p class="text-slate-400">State College | 2016 - 2020</p>
+                            <h3 class="text-xl font-bold">Bachelor of Technology in Electronics and Communication Engineering</h3>
+                            <p class="text-slate-400">MRCET, India</p>
                         </div>
                     </div>
                 </div>
@@ -605,15 +627,15 @@
                         I'm currently seeking new opportunities and would love to hear from you. Whether you have a question or just want to connect, feel free to reach out.
                     </p>
                     <div class="flex justify-center items-center space-x-8">
-                        <a href="mailto:youremail@example.com" class="text-slate-400 hover:text-cyan-400 transition transform hover:scale-110">
+                        <a href="mailto:shagasindhuja2000@gmail.com" class="text-slate-400 hover:text-cyan-400 transition transform hover:scale-110">
                             <i class="fas fa-envelope text-4xl"></i>
                             <span class="block mt-2">Email</span>
                         </a>
-                         <a href="#" class="text-slate-400 hover:text-cyan-400 transition transform hover:scale-110">
+                         <a href="https://github.com/SindhujaShaga" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition transform hover:scale-110">
                             <i class="fab fa-github text-4xl"></i>
                              <span class="block mt-2">GitHub</span>
                         </a>
-                         <a href="#" class="text-slate-400 hover:text-cyan-400 transition transform hover:scale-110">
+                         <a href="https://www.linkedin.com/in/sindhuja-shaga-725b74191/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition transform hover:scale-110">
                             <i class="fab fa-linkedin text-4xl"></i>
                              <span class="block mt-2">LinkedIn</span>
                         </a>
